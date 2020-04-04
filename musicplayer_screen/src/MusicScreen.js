@@ -1,9 +1,15 @@
-import React from 'react';
-import {View,Text,StyleSheet,TouchableOpacity,Image} from 'react-native';
+import React,{useState} from 'react';
+import {View,Text,StyleSheet,TouchableOpacity,Image,Slider} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+//import Slider from '@react-native-community/slider';
 import {FontAwesome} from '@expo/vector-icons'
 
 const MusicScreen = () =>{
+     const [state, setstate] = useState({trakLenth:300,timeElapsed:"0.00",timeRemaining:"5.00"});
+
+     const ChangeTime = second => {
+
+     }
     return (
         <SafeAreaView style={styles.container}>
             <View style={{alignItems:"center"}}>
@@ -18,6 +24,27 @@ const MusicScreen = () =>{
                     <Text style={[styles.darktext,{fontWeight:"500",fontSize:20}]}>Exhale</Text>
                     <Text style={[styles.text,{fontSize:20}]}>Jurne block</Text>
                 </View>
+                
+            </View>
+            <View style={{marginTop:32}}>
+                <Slider 
+                minimumValue={0}
+                maximumValue={state.trakLenth}
+                // style={styles.track}
+                minimumTrackTintColor="#32786C"
+
+                />
+            </View>
+            <View style={styles.musicpad}>
+                <TouchableOpacity>
+                    <FontAwesome name="backward" size={32}/>
+                </TouchableOpacity> 
+                <TouchableOpacity style={styles.playbtncontainer}>
+                    <FontAwesome name="play" size={32} style={styles.playbtn}/>
+                </TouchableOpacity> 
+                <TouchableOpacity>
+                    <FontAwesome name="forward" size={32}/>
+                </TouchableOpacity>   
             </View>
         </SafeAreaView>
     )
@@ -53,6 +80,24 @@ const styles = StyleSheet.create({
         height:250,
         // borderRadius:200,
         
+    },
+    musicpad:{
+        flexDirection: "row",
+        justifyContent:"center",
+        alignItems:"center",
+        marginTop:30
+
+    },
+    playbtncontainer:{
+        borderColor:"#658780",
+        borderWidth:5,
+        width:70,
+        height:70,
+        alignItems:"center",
+        justifyContent:"center",
+        borderRadius:50,
+        marginHorizontal:32,
+        elevation:40
     }
   });
   
